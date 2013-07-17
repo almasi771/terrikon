@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 
-from .context import terrikon, render_email
+from .context import terrikon, render
 import os
 import unittest
-import tempfile
 
 
 
@@ -16,12 +15,17 @@ class BasicTestSuite(unittest.TestCase):
         assert("render" in rv.data)
 
 class RenderEmailSuite(unittest.TestCase):
-    def test_render_template_for_email(self):
-        rendered_email = render_email.render('sample_email.html', FirstName = "AFirstName")
-        print(rendered_email)
-        assert("sample email generated for" in rendered_email)
-        assert("AFirstName" in rendered_email)
-
+    
+    def test_sample_email(self):
+        context = {"FirstName": "Test",
+            "LastName": "Registrant",
+            "Program": "Test Program",
+            "ProgramYear": "2013",
+            "ProgramName": "Test Program Academic Year Exchange",
+            "DocumentDeadlineDate": "January 1st, 1985",
+            "Finalist":True}
+        rendered = render.render_html('sample_email.html', context)
+        assert("January" in rendered)
 
 if __name__ == '__main__':
     unittest.main()
