@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from .context import sample
+from .context import terrikon
 
 import unittest
 
 
 class AdvancedTestSuite(unittest.TestCase):
     """Advanced test cases."""
-
-    def test_thoughts(self):
-        sample.hmm()
 
 
 if __name__ == '__main__':
