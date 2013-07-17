@@ -1,0 +1,21 @@
+{% extends "email_base.html" %}
+
+{% block content %}
+
+<p>Dear {{ FirstName }} {{ LastName }},</p>
+
+<p>This is a sample email generated for {{ Program }}.</p>
+
+{% if Finalist %}
+<p>We're delighted to inform you that you are a finalist for the {{ ProgramYear }} {{ ProgramName }}. Please return the attached document by {{ DocumentDeadlineDate }}.</p>
+{% endif %}
+
+{% if Alternate %}
+<p>We're happy to inform you that you are an alternate for the {{ ProgramYear }} {{ ProgramName }}.</p>
+{% endif %}
+
+<p>All the best,</p>
+
+<p>The {{ ProgramName }} team</p>
+
+{% endblock %}
